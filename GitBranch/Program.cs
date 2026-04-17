@@ -67,6 +67,17 @@ while (true)
             }
             break;
         case "3":
+            Console.Write("Digite um nome para busca: ");
+            string busca = Console.ReadLine().ToUpper();
+
+            if (nomes.Contains(busca))
+            {
+                Console.WriteLine("Nome informado encontrado! ");
+            }
+            else
+            {
+                Console.WriteLine("Nome informado não encontrado!");
+            }
             break;
         case "4":
             break;
@@ -77,3 +88,4 @@ while (true)
             break;
     }
 }
+
