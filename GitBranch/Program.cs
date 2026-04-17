@@ -1,4 +1,4 @@
-﻿string opcaoMenu;
+string opcaoMenu;
 string[] nomes = new string[5];
 string nomeUsuario;
 int qtdCadastros = 0;
@@ -48,8 +48,31 @@ while (true)
             break;
 
         case "2":
+            Console.WriteLine("\n--- RELATÓRIO DE USUÁRIOS ---");
+            if (qtdCadastros == 0)
+            {
+                Console.WriteLine("Nenhum registro encontrado.");
+            }
+            else
+            {
+                for (int i = 0; i < qtdCadastros; i++)
+                {
+                    Console.WriteLine($"Posição {i} : {nomes[i]}");
+                }
+            }
             break;
         case "3":
+            Console.Write("Digite um nome para busca: ");
+            string busca = Console.ReadLine().ToUpper();
+
+            if (nomes.Contains(busca))
+            {
+                Console.WriteLine("Nome informado encontrado! ");
+            }
+            else
+            {
+                Console.WriteLine("Nome informado não encontrado!");
+            }
             break;
         case "4":
             break;
