@@ -1,10 +1,20 @@
-﻿namespace GitBranch
-{
-    internal class Program
+﻿string[] nomes = new string[5];
+int qtdCadastros = 0;
+bool continuar = true;
+
+
+
+case "2":
+    Console.WriteLine("\n--- RELATÓRIO DE USUÁRIOS ---");
+    if (qtdCadastros == 0)
     {
-        static void Main(string[] args)
+        Console.WriteLine("Nenhum registro encontrado.");
+    }
+    else
+    {
+        for (int i = 0; i < qtdCadastros; i++)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine($"Posição {i} : {nomes[i]}");
         }
     }
-}
+    break;
