@@ -3,7 +3,8 @@ string[] nomes = new string[5];
 string nomeUsuario;
 int qtdCadastros = 0;
 int maxCadastros = 5;
-bool cadastroEfetivado = false;
+string confirmacao;
+
 Console.WriteLine("Bem vindo, usuário");
 Console.WriteLine("1. Cadastrar"); // Gabriel
 Console.WriteLine("2. Listar todos os cadastros"); // Karina
@@ -18,39 +19,34 @@ while (true)
     switch (opcaoMenu)
     {
         case "1":
-            Console.Write("Informe o nome do usuário: ");
-            nomeUsuario = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.Write("Informe o nome do usuário: ");
+                nomeUsuario = Console.ReadLine().ToUpper();
+                Console.Write($"Confirma cadastro do usuário '{nomeUsuario}'? (S/N): ");
+                confirmacao = Console.ReadLine().ToUpper();
+            } while (confirmacao != "S");
+
+            bool cadastrado = false;
 
             for (int i = 0; i < nomes.Length; i++)
             {
-                if (nomes[i] != null)
+                if (nomes[i] == null)
                 {
+                    nomes[i] = nomeUsuario;
                     qtdCadastros++;
+                    Console.WriteLine("Cadastrado com sucesso!");
+                    cadastrado = true;
+                    break;
                 }
             }
 
-            if (qtdCadastros == maxCadastros)
+            if (!cadastrado)
             {
                 Console.WriteLine("Agenda cheia! Exclua um usuário antes de prosseguir");
-                return;
             }
-
-            for (int i = 0; i <= qtdCadastros; i++)
-            {
-                while (!cadastroEfetivado)
-                {
-                    if (nomes[i] == null)
-                    {
-                        nomes[i] = nomeUsuario;
-                        cadastroEfetivado = true;
-                        
-                    }
-                }
-            }
-            
-            qtdCadastros++;
-
             break;
+
         case "2":
             break;
         case "3":
