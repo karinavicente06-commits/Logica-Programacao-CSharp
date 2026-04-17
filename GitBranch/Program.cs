@@ -4,6 +4,7 @@ string nomeUsuario;
 int qtdCadastros = 0;
 int maxCadastros = 5;
 bool cadastroEfetivado = false;
+bool continuar = true;
 Console.WriteLine("Bem vindo, usuário");
 Console.WriteLine("1. Cadastrar"); // Gabriel
 Console.WriteLine("2. Listar todos os cadastros"); // Karina
@@ -52,6 +53,18 @@ while (true)
 
             break;
         case "2":
+            Console.WriteLine("\n--- RELATÓRIO DE USUÁRIOS ---");
+            if (qtdCadastros == 0)
+            {
+                Console.WriteLine("Nenhum registro encontrado.");
+            }
+            else
+            {
+                for (int i = 0; i < qtdCadastros; i++)
+                {
+                    Console.WriteLine($"Posição {i} : {nomes[i]}");
+                }
+            }
             break;
         case "3":
             break;
