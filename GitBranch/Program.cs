@@ -1,4 +1,4 @@
-﻿string opcaoMenu;
+string opcaoMenu;
 string[] nomes = new string[5];
 string nomeUsuario;
 int qtdCadastros = 0;
@@ -83,4 +83,3 @@ while (true)
             break;
     }
 }
-
