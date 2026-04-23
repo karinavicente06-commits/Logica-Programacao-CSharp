@@ -1,3 +1,7 @@
+
+
+
+
 string opcaoMenu;
 string[] nomes = new string[5];
 string nomeUsuario;
@@ -75,6 +79,21 @@ while (true)
             }
             break;
         case "4":
+        
+  Console.Write("Digite o nome do usuário que deseja remover: ");
+            string nomeRemover = Console.ReadLine().ToUpper(); // Adicionei ToUpper para combinar com seu cadastro
+
+            for (int i = 0; i < nomes.Length; i++)
+            {
+                if (nomes[i] == nomeRemover)
+                {
+                    nomes[i] = null;
+                    qtdCadastros--;
+                    Console.WriteLine($"Usuário {nomeRemover} removido!");
+                    break;
+                }
+            }
+        
             break;
         case "5":
             return;
@@ -82,4 +101,5 @@ while (true)
             Console.WriteLine("Opção inválida!");
             break;
     }
+
 }
