@@ -81,7 +81,7 @@ while (true)
         case "4":
         
   Console.Write("Digite o nome do usuário que deseja remover: ");
-            string nomeRemover = Console.ReadLine().ToUpper(); // Adicionei ToUpper para combinar com seu cadastro
+            string nomeRemover = Console.ReadLine().ToUpper(); 
 
             for (int i = 0; i < nomes.Length; i++)
             {
