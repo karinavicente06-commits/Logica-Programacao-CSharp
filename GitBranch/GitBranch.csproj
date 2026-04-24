@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="C:\Users\lucas64098096\Downloads\github.cs" Link="github.cs" />
+  </ItemGroup>
+
 </Project>
