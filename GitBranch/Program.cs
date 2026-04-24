@@ -1,7 +1,3 @@
-
-
-
-
 string opcaoMenu;
 string[] nomes = new string[5];
 string nomeUsuario;
@@ -10,10 +6,10 @@ int maxCadastros = 5;
 string confirmacao;
 
 Console.WriteLine("Bem vindo, usuário");
-Console.WriteLine("1. Cadastrar"); // Gabriel
-Console.WriteLine("2. Listar todos os cadastros"); // Karina
-Console.WriteLine("3. Buscar conta"); // Lucas
-Console.WriteLine("4. Excluir conta"); // Charles
+Console.WriteLine("1. Cadastrar"); // - Gabriel
+Console.WriteLine("2. Listar todos os cadastros"); // - Karina
+Console.WriteLine("3. Buscar conta"); // - Lucas
+Console.WriteLine("4. Excluir conta"); // - Charles
 Console.WriteLine("5. Encerrar/Sair");
 Console.Write("Informe a opção: ");
 opcaoMenu = Console.ReadLine();
