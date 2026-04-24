@@ -44,11 +44,11 @@ while (true)
                     {
                         nomes[i] = nomeUsuario;
                         cadastroEfetivado = true;
-                        
+
                     }
                 }
             }
-            
+
             qtdCadastros++;
 
             break;
@@ -69,6 +69,41 @@ while (true)
         case "3":
             break;
         case "4":
+
+        
+  Console.Write("Digite o nome do usuário que deseja remover: ");
+            string nomeRemover = Console.ReadLine().ToUpper(); 
+
+
+            int indice = -1;
+
+            for (int i = 0; i < qtdCadastros; i++)
+            {
+                if (nomes[i] == nomeRemover)
+                {
+                    indice = i;
+                    break;
+                }
+            }
+
+            if (indice != -1)
+            {
+                for (int i = indice; i < qtdCadastros - 1; i++)
+                {
+                    nomes[i] = nomes[i + 1];
+                }
+
+                nomes[qtdCadastros - 1] = null;
+
+                qtdCadastros--;
+
+                Console.WriteLine("Usuário removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Usuário não encontrado!");
+            }
+
             break;
         case "5":
             return;
