@@ -3,52 +3,58 @@
 
 
 string opcaoMenu;
-string[] nomes = new string[5];
+int maxCadastros = 5;
+string[] nomes = new string[maxCadastros];
 string nomeUsuario;
 int qtdCadastros = 0;
-int maxCadastros = 5;
 string confirmacao;
+bool encerrar = false;
 
 Console.WriteLine("Bem vindo, usuário");
-Console.WriteLine("1. Cadastrar"); // Gabriel
-Console.WriteLine("2. Listar todos os cadastros"); // Karina
-Console.WriteLine("3. Buscar conta"); // Lucas
-Console.WriteLine("4. Excluir conta"); // Charles
-Console.WriteLine("5. Encerrar/Sair");
-Console.Write("Informe a opção: ");
-opcaoMenu = Console.ReadLine();
 
-while (true)
+while (!encerrar)
 {
+    Console.WriteLine("=========== MENU ===========");
+    Console.WriteLine("1. Cadastrar"); // Gabriel
+    Console.WriteLine("2. Listar todos os cadastros"); // Karina
+    Console.WriteLine("3. Buscar conta"); // Lucas
+    Console.WriteLine("4. Excluir conta"); // Charles
+    Console.WriteLine("5. Encerrar/Sair");
+    Console.Write("Informe a opção: ");
+    opcaoMenu = Console.ReadLine();
+
     switch (opcaoMenu)
     {
         case "1":
             do
             {
-                Console.Write("Informe o nome do usuário: ");
-                nomeUsuario = Console.ReadLine().ToUpper();
-                Console.Write($"Confirma cadastro do usuário '{nomeUsuario}'? (S/N): ");
-                confirmacao = Console.ReadLine().ToUpper();
-            } while (confirmacao != "S");
-
-            bool cadastrado = false;
-
-            for (int i = 0; i < nomes.Length; i++)
-            {
-                if (nomes[i] == null)
+                if (qtdCadastros >= maxCadastros)
                 {
-                    nomes[i] = nomeUsuario;
-                    qtdCadastros++;
-                    Console.WriteLine("Cadastrado com sucesso!");
-                    cadastrado = true;
+                    Console.WriteLine("Agenda cheia! Exclua um usuário antes de prosseguir");
                     break;
                 }
-            }
 
-            if (!cadastrado)
-            {
-                Console.WriteLine("Agenda cheia! Exclua um usuário antes de prosseguir");
-            }
+                Console.Write("Informe o nome do usuário: ");
+                nomeUsuario = Console.ReadLine().ToUpper();
+
+                if (nomeUsuario == "")
+                {
+                    Console.WriteLine("Nome para usuário inválido!");
+                    break;
+                }
+
+                Console.Write($"Confirma cadastro do usuário '{nomeUsuario}'? (S/N): ");
+                confirmacao = Console.ReadLine().ToUpper();
+
+                if (confirmacao == "S")
+                {
+                    nomes[qtdCadastros] = nomeUsuario;
+                    qtdCadastros++;
+                    Console.WriteLine("Cadastrado com sucesso!");
+                    break;
+                }
+            } while (confirmacao.ToUpper() == "N");
+
             break;
 
         case "2":
@@ -61,7 +67,10 @@ while (true)
             {
                 for (int i = 0; i < qtdCadastros; i++)
                 {
-                    Console.WriteLine($"Posição {i} : {nomes[i]}");
+                    if (nomes[i] != null)
+                    { 
+                        Console.WriteLine($"Posição {i} : {nomes[i]}");
+                    }
                 }
             }
             break;
@@ -79,23 +88,41 @@ while (true)
             }
             break;
         case "4":
-        
-  Console.Write("Digite o nome do usuário que deseja remover: ");
-            string nomeRemover = Console.ReadLine().ToUpper(); 
+            Console.Write("Digite o nome do usuário que deseja remover: ");
+            string nomeRemover = Console.ReadLine().ToUpper();
 
-            for (int i = 0; i < nomes.Length; i++)
+            int indice = -1;
+
+            for (int i = 0; i < qtdCadastros; i++)
             {
                 if (nomes[i] == nomeRemover)
                 {
-                    nomes[i] = null;
-                    qtdCadastros--;
-                    Console.WriteLine($"Usuário {nomeRemover} removido!");
+                    indice = i;
                     break;
                 }
             }
-        
+
+            if (indice != -1)
+            {
+                for (int i = indice; i < qtdCadastros - 1; i++)
+                {
+                    nomes[i] = nomes[i + 1];
+                }
+
+                nomes[qtdCadastros - 1] = null;
+
+                qtdCadastros--;
+
+                Console.WriteLine("Usuário removido com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Usuário não encontrado!");
+            }
+
             break;
         case "5":
+            encerrar = true;
             return;
         default:
             Console.WriteLine("Opção inválida!");
