@@ -1,7 +1,3 @@
-
-
-
-
 string opcaoMenu;
 int maxCadastros = 5;
 string[] nomes = new string[maxCadastros];
@@ -69,7 +65,7 @@ while (!encerrar)
                 {
                     if (nomes[i] != null)
                     { 
-                        Console.WriteLine($"Posição {i} : {nomes[i]}");
+                        Console.WriteLine($"Posição {i+1} : {nomes[i]}");
                     }
                 }
             }
@@ -128,5 +124,4 @@ while (!encerrar)
             Console.WriteLine("Opção inválida!");
             break;
     }
-
 }
